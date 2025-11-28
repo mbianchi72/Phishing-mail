@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Verifica Credenziali Bitrock</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 40px; }
+    .container {
+      background: white; padding: 30px; max-width: 400px; margin: 0 auto;
+      border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    input { width: 100%; padding: 10px; margin: 10px 0; }
+    button { background: #004f9e; color: white; padding: 10px; width: 100%; border: none; }
+    .footer { font-size: 12px; color: #777; text-align: center; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Verifica delle credenziali</h2>
+    <p>Per completare l’aggiornamento della sicurezza, inserisci il tuo indirizzo email aziendale.</p>
+
+    <form action="/successo.html" method="POST">
+      <input type="email" name="email" placeholder="email@bitrock.it" required>
+      <button type="submit">Continua</button>
+    </form>
+
+    <div class="footer">
+      © 2025 Bitrock Security – Test di phishing interno
+    </div>
+  </div>
+</body>
+</html>
