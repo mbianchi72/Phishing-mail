@@ -2,356 +2,181 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Bitrock – Verifica credenziali</title>
+  <title>Bitrock – Verifica Sicurezza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     :root {
-      --bg-dark: #060816;
-      --bg-card: #0f1224;
+      --bg-light: #f6f7fb;
+      --card-bg: #ffffff;
+      --border: #e2e3e7;
       --accent: #ff7a1a;
-      --accent-soft: rgba(255, 122, 26, 0.12);
-      --text-main: #f5f5f7;
-      --text-muted: #a4a5a7;
-      --border-soft: rgba(255, 255, 255, 0.08);
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
-      --radius-xl: 18px;
-    }
-
-    * {
-      box-sizing: border-box;
+      --text-main: #1d1d1f;
+      --text-muted: #6b6b6e;
+      --radius: 18px;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top left, #191f3b 0, #060816 55%);
+      background: var(--bg-light);
       color: var(--text-main);
-      display: flex;
-      flex-direction: column;
     }
 
     .page {
-      max-width: 1040px;
+      max-width: 920px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 32px 20px 48px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
     }
 
     /* HEADER */
-
     .header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 16px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
     .brand-logo {
-      height: 40px;
+      height: 58px;
       width: auto;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .badge {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 18, 36, 0.8);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #19c37d;
-      box-shadow: 0 0 0 4px rgba(25, 195, 125, 0.3);
-    }
-
-    /* MAIN CARD */
-
+    /* CARD */
     .card {
-      background: linear-gradient(
-          135deg,
-          rgba(255, 122, 26, 0.12),
-          transparent 55%
-        ),
-        var(--bg-card);
-      border-radius: 24px;
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      padding: 28px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      grid-template-columns: 1.2fr 1fr;
       gap: 32px;
       align-items: center;
     }
 
-    .card-left {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .card-kicker {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.17em;
-      color: var(--accent);
+    .title {
+      font-size: 28px;
       font-weight: 600;
+      margin-bottom: 14px;
     }
 
-    .card-title {
-      font-size: 26px;
-      line-height: 1.2;
-      font-weight: 650;
-    }
-
-    .card-title span {
-      color: var(--accent);
-    }
-
-    .card-text {
+    .subtitle {
       font-size: 14px;
       color: var(--text-muted);
-      max-width: 480px;
-    }
-
-    .card-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(5, 7, 22, 0.7);
-      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* FORM */
-
-    .card-right {
-      background: rgba(5, 7, 22, 0.8);
-      border-radius: var(--radius-xl);
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(18px);
+    .form-card {
+      background: #fafafa;
+      border-radius: var(--radius);
+      padding: 22px;
+      border: 1px solid #e5e5e5;
     }
 
     .form-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
-    .form-subtitle {
-      font-size: 12px;
+    .form-sub {
+      font-size: 13px;
       color: var(--text-muted);
       margin-bottom: 16px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    label {
-      font-size: 12px;
-      margin-bottom: 2px;
-      color: var(--text-muted);
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
     input[type="email"] {
       width: 100%;
-      padding: 9px 10px;
+      padding: 10px 12px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: #050716;
-      color: var(--text-main);
-      font-size: 13px;
-      outline: none;
+      border: 1px solid #cfd0d4;
+      font-size: 14px;
+      color: #333;
     }
 
     input[type="email"]:focus {
+      outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.4);
-    }
-
-    .hint {
-      font-size: 11px;
-      color: var(--text-muted);
+      box-shadow: 0 0 0 2px rgba(255, 122, 26, 0.2);
     }
 
     button[type="submit"] {
-      margin-top: 6px;
+      margin-top: 14px;
       width: 100%;
+      padding: 12px 14px;
       border: none;
-      border-radius: 999px;
-      padding: 9px 12px;
-      font-size: 13px;
+      border-radius: 10px;
+      font-size: 14px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+      background: var(--accent);
+      color: white;
       cursor: pointer;
-      background: linear-gradient(135deg, #ff7a1a, #ffb347);
-      color: #050716;
-      box-shadow: 0 12px 25px rgba(255, 122, 26, 0.35);
     }
 
     button[type="submit"]:hover {
-      filter: brightness(1.03);
-      transform: translateY(-1px);
-    }
-
-    button[type="submit"]:active {
-      transform: translateY(0);
-      box-shadow: 0 6px 16px rgba(255, 122, 26, 0.4);
+      filter: brightness(1.05);
     }
 
     .disclaimer {
-      margin-top: 10px;
-      font-size: 10px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      border-radius: 10px;
-      padding: 8px 9px;
-      background: rgba(4, 6, 20, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    /* FOOTER */
-
-    .footer {
-      margin-top: 8px;
+      margin-top: 12px;
       font-size: 11px;
       color: var(--text-muted);
-      text-align: center;
-      opacity: 0.9;
+      line-height: 1.4;
     }
 
     /* RESPONSIVE */
-
-    @media (max-width: 768px) {
-      .page {
-        padding: 18px 14px 32px;
-      }
-
+    @media (max-width: 780px) {
       .card {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 20px 18px 18px;
-      }
-
-      .card-right {
-        order: -1;
-      }
-
-      .card-title {
-        font-size: 22px;
-      }
-
-      .brand-name {
-        font-size: 16px;
-      }
-
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
+    <!-- HEADER -->
     <header class="header">
-      <div class="brand">
-        <!-- Metti il file del logo (es. bitrock-logo.svg) nella stessa cartella di index.html -->
-        <img src="LogoBitrock_Colore.png" alt="Bitrock" class="brand-logo" />
-        <div class="brand-text">
-          <div class="brand-name">Bitrock</div>
-          <div class="brand-tagline">
-            High-end Technology Consulting &amp; Security
-          </div>
-        </div>
-      </div>
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Internal Security Training
-      </div>
+      <img src="bitrock-logo.png" alt="Bitrock Logo" class="brand-logo" />
     </header>
 
-    <main class="card">
-      <section class="card-left">
-        <div class="card-kicker">Verifica credenziali</div>
-        <h1 class="card-title">
-          Aggiornamento <span>sicurezza account</span> Bitrock
-        </h1>
-        <p class="card-text">
-          Per completare l’allineamento alle policy interne e garantire la
-          continuità di accesso ai servizi aziendali, ti chiediamo di
-          confermare il tuo indirizzo email Bitrock.
+    <!-- MAIN CARD -->
+    <section class="card">
+      <div>
+        <h1 class="title">Verifica della Sicurezza dell’Account</h1>
+        <p class="subtitle">
+          Per garantire l’allineamento con le policy interne e assicurare
+          l’accesso ai servizi aziendali, è richiesta una rapida conferma del tuo
+          indirizzo email Bitrock.
         </p>
-        <div class="card-highlights">
-          <div class="pill">Ambiente corporate</div>
-          <div class="pill">Single Sign-On</div>
-          <div class="pill">Allineamento policy di sicurezza</div>
-        </div>
-      </section>
+      </div>
 
-      <aside class="card-right">
+      <div class="form-card">
         <div class="form-title">Conferma email aziendale</div>
-        <div class="form-subtitle">
-          Inserisci il tuo indirizzo email Bitrock per completare il controllo.
+        <div class="form-sub">
+          Inserisci il tuo indirizzo email per completare la procedura.
         </div>
 
         <form action="success.html" method="GET">
           <div class="form-group">
-            <label for="email">Email aziendale</label>
+            <label for="email">Email Bitrock</label>
             <input
               type="email"
               id="email"
@@ -359,25 +184,17 @@
               placeholder="nome.cognome@bitrock.it"
               required
             />
-            <div class="hint">
-              Usa esclusivamente l’indirizzo associato al tuo account aziendale.
-            </div>
           </div>
 
-          <button type="submit">Verifica ora</button>
+          <button type="submit">Continua</button>
 
           <div class="disclaimer">
-            Questo processo è parte di un’attività di verifica interna della
-            sicurezza. Potrebbero essere richieste ulteriori conferme in caso di
-            esito negativo o incongruenze.
+            Questo passaggio rientra in un’attività interna di verifica della
+            sicurezza aziendale.
           </div>
         </form>
-      </aside>
-    </main>
-
-    <footer class="footer">
-      © 2025 Bitrock – Internal Security Check (training & awareness)
-    </footer>
+      </div>
+    </section>
   </div>
 </body>
 </html>
